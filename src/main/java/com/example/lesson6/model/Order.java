@@ -29,6 +29,10 @@ public class Order {
     private UUID id;
 
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "id", column = @Column(name = "customer_id", nullable = false)),
+            @AttributeOverride(name = "name", column = @Column(name = "customer_name", nullable = false))
+    })
     private Customer customer;
 
     @ManyToOne
@@ -41,7 +45,7 @@ public class Order {
 
     @ManyToMany
     @JoinTable(joinColumns = @JoinColumn(name = "order_id"),
-               inverseJoinColumns = @JoinColumn(name = "option_id"))
+            inverseJoinColumns = @JoinColumn(name = "option_id"))
     private Set<Option> options;
 
     @Column(nullable = false)

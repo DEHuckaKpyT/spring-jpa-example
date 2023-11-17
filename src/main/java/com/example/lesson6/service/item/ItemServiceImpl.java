@@ -1,4 +1,4 @@
-package com.example.lesson6.service;
+package com.example.lesson6.service.item;
 
 import com.example.lesson6.model.Item;
 import com.example.lesson6.model.QItem;
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.UUID;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -29,6 +30,13 @@ public class ItemServiceImpl implements ItemService {
     private final EntityManager entityManager;
 
     private final QItem qItem = QItem.item;
+
+    @Override
+    @Transactional(readOnly = true)
+    public Item get(UUID id){
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Вещь не найдена"));
+    }
 
     @Override
     @Transactional(readOnly = true)

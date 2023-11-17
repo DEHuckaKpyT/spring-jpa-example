@@ -1,6 +1,7 @@
-package com.example.lesson6.service;
+package com.example.lesson6.service.item;
 
 import com.example.lesson6.model.Item;
+import com.example.lesson6.service.item.ItemService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.jupiter.tools.spring.test.postgres.annotation.meta.EnablePostgresIntegrationTest;

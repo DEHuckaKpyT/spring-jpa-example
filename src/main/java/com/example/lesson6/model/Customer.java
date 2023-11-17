@@ -1,7 +1,9 @@
 package com.example.lesson6.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -13,14 +15,16 @@ import java.util.UUID;
  *
  * @author Denis Matytsin
  */
-@Data
+@Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Embeddable
 public class Customer {
 
     @Column(nullable = false)
-    private UUID customerId;
+    private UUID id;
 
     @Column(nullable = false)
-    private String customerName;
+    private String name;
 }

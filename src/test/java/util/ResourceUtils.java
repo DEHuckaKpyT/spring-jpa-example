@@ -18,6 +18,13 @@ public class ResourceUtils {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @SneakyThrows
+    public static <T> T parseJson(String resourcePath, Class<T> clazz) {
+        ClassPathResource resource = new ClassPathResource(resourcePath);
+
+        return mapper.readValue(resource.getInputStream(), clazz);
+    }
+
+    @SneakyThrows
     public static <T> T parseJson(String resourcePath, TypeReference<T> typeReference) {
         ClassPathResource resource = new ClassPathResource(resourcePath);
 
