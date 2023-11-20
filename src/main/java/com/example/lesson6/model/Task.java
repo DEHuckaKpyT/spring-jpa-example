@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.FetchType.LAZY;
 
 /**
  * Created on 20.11.2023.
@@ -36,7 +37,7 @@ public class Task {
 
     /** Теги задачи */
     @Column(name = "tag")
-    @ElementCollection(fetch = EAGER)
+    @ElementCollection(fetch = LAZY)
     private Set<String> tags;
 
     /** Прикреплённые файлы */
