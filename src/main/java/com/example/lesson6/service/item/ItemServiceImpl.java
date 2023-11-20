@@ -48,7 +48,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Item> listFromQuerydsl(String name) {
+    public List<Item> listFromJPAQuery(String name) {
         Predicate predicate = qItem.name.containsIgnoreCase(name);
 
         return new JPAQuery<Item>(entityManager)

@@ -33,7 +33,7 @@ public class OptionServiceImplIT {
     @Test
     @DataSet("/datasets/service/option/update.json")
     @ExpectedDataSet("/datasets/service/option/update__expected.json")
-    void execute(SoftAssertions softly) {
+    void update(SoftAssertions softly) {
         // Arrange
         UpdateOptionArgument argument = UpdateOptionArgument.builder()
                                                             .name("name2")

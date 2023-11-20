@@ -11,6 +11,7 @@ import java.util.UUID;
 /**
  * Created on 16.11.2023.
  * <p>
+ * Дополнительная опция к товару/услуге
  *
  * @author Denis Matytsin
  */
@@ -29,6 +30,7 @@ public class Option {
     @Column(nullable = false)
     private String name;
 
+    /** Прибавление к стоимости товара */
     @Column(nullable = false)
     private int additionalPrice;
 

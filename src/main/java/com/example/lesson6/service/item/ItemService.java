@@ -17,5 +17,5 @@ public interface ItemService {
 
     List<Item> list(String name, Sort sort);
 
-    List<Item> listFromQuerydsl(String name);
+    List<Item> listFromJPAQuery(String name);
 }

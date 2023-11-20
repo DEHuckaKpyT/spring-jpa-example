@@ -20,7 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class Customer {
+public class NamedEntity {
 
     @Column(nullable = false)
     private UUID id;

@@ -1,8 +1,8 @@
 package com.example.lesson6.action.order;
 
 import com.example.lesson6.action.order.argument.CreateOrderActionArgument;
-import com.example.lesson6.model.Customer;
 import com.example.lesson6.model.Item;
+import com.example.lesson6.model.NamedEntity;
 import com.example.lesson6.model.Option;
 import com.example.lesson6.model.Order;
 import com.example.lesson6.service.item.ItemService;
@@ -33,7 +33,7 @@ public class CreateOrderAction {
 
     @Transactional
     public Order execute(CreateOrderActionArgument argument) {
-        Customer customer = getCustomer(argument.getCustomerId());
+        NamedEntity customer = getCustomer(argument.getCustomerId());
         Item item = itemService.get(argument.getItemId());
         Set<Option> options = Sets.newHashSet(optionService.get(argument.getOptionIds()));
 
@@ -44,11 +44,11 @@ public class CreateOrderAction {
                                                       .build());
     }
 
-    private Customer getCustomer(UUID id) {
+    private NamedEntity getCustomer(UUID id) {
         // Обычно ФИО берётся из другого микросервиса. Сейчас это просто "заглушка"
-        return Customer.builder()
-                       .id(id)
-                       .name("Steve")
-                       .build();
+        return NamedEntity.builder()
+                          .id(id)
+                          .name("Steve")
+                          .build();
     }
 }

@@ -12,6 +12,7 @@ import static javax.persistence.EnumType.STRING;
 /**
  * Created on 16.11.2023.
  * <p>
+ * Заказ клиента
  *
  * @author Denis Matytsin
  */
@@ -28,12 +29,13 @@ public class Order {
     @GeneratedValue
     private UUID id;
 
+    /** Клиент/заказчик */
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "id", column = @Column(name = "customer_id", nullable = false)),
             @AttributeOverride(name = "name", column = @Column(name = "customer_name", nullable = false))
     })
-    private Customer customer;
+    private NamedEntity customer;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -43,9 +45,10 @@ public class Order {
     @Enumerated(value = STRING)
     private OrderStatus status;
 
+    /** Л=Дополнительные выбранные опции */
     @ManyToMany
     @JoinTable(joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "option_id"))
+               inverseJoinColumns = @JoinColumn(name = "option_id"))
     private Set<Option> options;
 
     @Column(nullable = false)

@@ -1,6 +1,6 @@
 package com.example.lesson6.service.order.argument;
 
-import com.example.lesson6.model.Customer;
+import com.example.lesson6.model.NamedEntity;
 import com.example.lesson6.model.Item;
 import com.example.lesson6.model.Option;
 import lombok.Builder;
@@ -18,7 +18,7 @@ import java.util.Set;
 @Builder
 public class CreateOrderArgument {
 
-    Customer customer;
+    NamedEntity customer;
     Item item;
     Set<Option> options;
 }

@@ -1,0 +1,23 @@
+{
+  "id": "00000001-0000-0000-0000-000000000001",
+  "name": "Простая задачка",
+  "description": null,
+  "tags": [
+    "просто",
+    "easy"
+  ],
+  "attachments": [
+    {
+      "nodeId": "00000002-0000-0000-0000-000000000001",
+      "name": "photo1.jpg",
+      "format": "image/jpg",
+      "size": "1"
+    },
+    {
+      "nodeId": "00000002-0000-0000-0000-000000000002",
+      "name": "report.xls",
+      "format": "docs/xls",
+      "size": "2"
+    }
+  ]
+}

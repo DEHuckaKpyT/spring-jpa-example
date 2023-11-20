@@ -1,7 +1,6 @@
 package com.example.lesson6.service.item;
 
 import com.example.lesson6.model.Item;
-import com.example.lesson6.service.item.ItemService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.jupiter.tools.spring.test.postgres.annotation.meta.EnablePostgresIntegrationTest;
@@ -11,11 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import util.ResourceUtils;
 
 import java.util.List;
 
 import static org.springframework.data.domain.Sort.Direction.DESC;
+import static util.ResourceUtils.parseJson;
 
 /**
  * Created on 16.11.2023.
@@ -32,13 +31,13 @@ public class ItemServiceImplIT {
 
     private static final String searchItemName = "РАСКА";
 
-    /** с помощью jpa repository */
+    /** с помощью QueryDSL repository */
     @Test
     @DataSet("/datasets/service/item/list-by-name.json")
     void getByRepository(SoftAssertions softly) {
         // Arrange
         Sort sort = Sort.by(DESC, "price");
-        List<Item> expected = ResourceUtils.parseJson("/json/service/item/list-by-name__expected.json", new TypeReference<>() {});
+        List<Item> expected = parseJson("/json/service/item/list-by-name__expected.json", new TypeReference<>() {});
 
         // Act
         List<Item> actual = service.list(searchItemName, sort);
@@ -55,10 +54,10 @@ public class ItemServiceImplIT {
     @DataSet("/datasets/service/item/list-by-name.json")
     void getByQuerydsl(SoftAssertions softly) {
         // Arrange
-        List<Item> expected = ResourceUtils.parseJson("/json/service/item/list-by-name__expected.json", new TypeReference<>() {});
+        List<Item> expected = parseJson("/json/service/item/list-by-name__expected.json", new TypeReference<>() {});
 
         // Act
-        List<Item> actual = service.listFromQuerydsl(searchItemName);
+        List<Item> actual = service.listFromJPAQuery(searchItemName);
 
         // Assert
         softly.assertThat(actual)

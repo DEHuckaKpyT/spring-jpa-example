@@ -11,6 +11,7 @@ import java.util.UUID;
 /**
  * Created on 16.11.2023.
  * <p>
+ * Товар/услуга
  *
  * @author Denis Matytsin
  */
